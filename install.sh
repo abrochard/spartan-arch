@@ -16,6 +16,9 @@ genfstab -U /mnt >> /mnt/etc/fstab
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-install.sh -O /mnt/chroot-install.sh
 arch-chroot /mnt /bin/bash ./chroot-install.sh
 
+# preparing post install
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /mnt/home/adrien/post-install.sh
+
 # reboot
 umount /mnt
 reboot

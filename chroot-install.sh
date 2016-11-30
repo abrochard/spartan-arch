@@ -53,6 +53,7 @@ pacman -S --noconfirm expac fakeroot yajl openssl
 
 # user mgmt
 echo 'Setting up user'
+read -t 1 -n 1000000 discard      # discard previous input
 echo 'Root password:'
 passwd
 useradd -m -G wheel -s /bin/zsh adrien

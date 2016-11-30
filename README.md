@@ -20,7 +20,6 @@ You want to boot on disk this time and eject the cd from the VM.
 
 Login as user 'adrien' then run the command
 ```shell
-wget http://bit.ly/2glkSlh -O post-install.sh
 bash post-install.sh
 ```
 The script will ask for the root password a couple of times.

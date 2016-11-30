@@ -3,6 +3,7 @@
 # Run install.sh first or this will fail due to missing dependencies
 
 # network on boot?
+read -t 1 -n 1000000 discard      # discard previous input
 sudo dhcpcd
 
 # xinitrc
@@ -20,6 +21,7 @@ echo '(server-start)' >> ~/.emacs
 # vboxsf mount
 mkdir workspace
 mkdir org
+read -t 1 -n 1000000 discard      # discard previous input
 sudo su
 echo 'org /home/adrien/org vboxsf uid=adrien,gid=wheel,rw,dmode=700,fmode=600,nofail 0 0' >> /etc/fstab
 echo 'workspace /home/adrien/workspace vboxsf uid=adrien,gid=wheel,rw,dmode=700,fmode=600,nofail 0 0' >> /etc/fstab
@@ -34,6 +36,7 @@ cd cower
 sudo pacman -S curl openssl yajl perl --noconfirm
 gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
 makepkg PKGBUILD
+read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U cower-*.pkg.tar.xz --noconfirm
 
 cd ~/Downloads
@@ -42,6 +45,7 @@ tar -xvf pacaur.tar.gz
 cd pacaur
 sudo pacman -S expac --noconfirm
 makepkg PKGBUILD
+read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U pacaur-*.pkg.tar.xz --noconfirm
 
 #oh-my-zsh
