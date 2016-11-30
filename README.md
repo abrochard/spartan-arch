@@ -11,7 +11,7 @@ This is a set of scripts designed to automate the creation of a minimal VM runni
 ## Installation
 Boot the VM on archlinux iso and then run the command
 ```shell
-wget http://bit.ly/2gGymbA -O install.sh
+wget https://goo.gl/ZPAMtT -O install.sh
 bash install.sh
 ```
 The install.sh script will run, ask for root and user password, then reboot the computer.
