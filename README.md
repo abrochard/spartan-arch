@@ -1,6 +1,7 @@
 # spartan-arch
 
 * Install
+``` shell
 timedatectl set-ntp true
 fdisk -l
 mkfs.ext4 /dev/sda1
@@ -32,8 +33,10 @@ visudo
 exit
 umount /mnt
 reboot
+```
 
 * Post-install
+``` shell
 # network on boot?
 sudo dhcpcd
 
@@ -86,3 +89,4 @@ sudo pacman -S autojump --noconfirm
 source ~/.zshrc
 
 # ssh keys
+```
