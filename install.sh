@@ -13,7 +13,7 @@ mount /dev/sda1 /mnt
 # chroot
 pacstrap /mnt base
 genfstab -U /mnt >> /mnt/etc/fstab
-wget [something] -O /mnt/chroot-install.sh
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-install.sh -O /mnt/chroot-install.sh
 arch-chroot /mnt /bin/bash ./chroot-install.sh
 
 # reboot
