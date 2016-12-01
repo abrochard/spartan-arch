@@ -45,7 +45,7 @@ pacman -S --noconfirm virtualbox-guest-utils
 
 # install dev envt.
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep
+pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
 npm install -g jscs jshint bower
 
@@ -59,8 +59,16 @@ read -t 1 -n 1000000 discard      # discard previous input
 echo 'root:'$password | chpasswd
 useradd -m -G wheel -s /bin/zsh adrien
 touch /home/adrien/.zshrc
-chown adrien:wheel /home/adrien/zshrc
+chown adrien:adrien /home/adrien/zshrc
+mkdir /home/adrien/org
+chown adrien:adrien /home/adrien/org
+mkdir /home/adrien/workspace
+chown adrien:adrien /home/adrien/workspace
 echo 'adrien:'$password | chpasswd
-visudo
+echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+
+# preparing post install
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/adrien/post-install.sh
+chown adrien:adrien /home/adrien/post-install.sh
 
 echo 'Done'

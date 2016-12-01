@@ -20,10 +20,6 @@ git clone https://github.com/abrochard/emacs-config.git
 echo '(load-file "~/emacs-config/bootstrap.el")' > ~/.emacs
 echo '(server-start)' >> ~/.emacs
 
-# vboxsf mount
-mkdir workspace
-mkdir org
-
 # cower & pacaur
 mkdir Downloads
 cd ~/Downloads
@@ -43,7 +39,7 @@ makepkg PKGBUILD
 read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U pacaur-*.pkg.tar.xz --noconfirm
 
-#oh-my-zsh
+# oh-my-zsh
 cd
 read -t 1 -n 1000000 discard      # discard previous input
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
@@ -51,6 +47,13 @@ sleep 5
 sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
 source ~/.zshrc
+
+# tmux setup like emacs
+echo 'unbind C-b' > ~/.tmux.conf
+echo 'set -g prefix C-x' >> ~/.tmux.conf
+echo 'bind C-x send-prefix' >> ~/.tmux.conf
+echo 'bind 2 split-window' >> ~/.tmux.conf
+echo 'bind 3 split-window -h' >> ~/.tmux.conf
 
 # environment variable
 # echo 'EDITOR=emacsclient' >> /etc/environment
