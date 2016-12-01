@@ -2,6 +2,8 @@
 
 # This will be ran from the chrooted env.
 
+password=$1
+
 # setup mirrors
 echo 'Setting up mirrors'
 cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
@@ -54,11 +56,11 @@ pacman -S --noconfirm expac fakeroot yajl openssl
 # user mgmt
 echo 'Setting up user'
 read -t 1 -n 1000000 discard      # discard previous input
-echo 'Root password:'
-passwd
+echo 'root:'$password | chpasswd
 useradd -m -G wheel -s /bin/zsh adrien
-echo 'User password:'
-passwd adrien
+touch /home/adrien/.zshrc
+chown adrien:wheel /home/adrien/zshrc
+echo 'adrien:'$password | chpasswd
 visudo
 
 echo 'Done'

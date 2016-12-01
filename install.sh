@@ -1,5 +1,7 @@
 #!/bin/bash
 
+password=$1
+
 # set time
 timedatectl set-ntp true
 
@@ -23,7 +25,7 @@ wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-inst
 arch-chroot /mnt /bin/bash ./chroot-install.sh
 
 # preparing post install
-wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /mnt/home/adrien/post-install.sh
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /mnt/home/adrien/post-install.sh $password
 
 # reboot
 umount /mnt
