@@ -29,6 +29,5 @@ The script will ask for the root password a couple of times.
 Once the VM is booted, log in as 'adrien' and call `startx` to start Xorg.
 
 ## TODO
-- automatic oh-my-zsh config
 - dhcpcd on boot
 - ssh-keys generation
