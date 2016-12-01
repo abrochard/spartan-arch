@@ -2,7 +2,8 @@
 
 # This will be ran from the chrooted env.
 
-password=$1
+user=$1
+password=$2
 
 # setup mirrors
 echo 'Setting up mirrors'
@@ -39,9 +40,12 @@ grub-mkconfig -o /boot/grub/grub.cfg
 echo 'Installing Xorg'
 pacman -S --noconfirm xorg xorg-xinit xterm
 
-# install virtualbox guest additions
-echo 'Installing VB-guest-utils'
-pacman -S --noconfirm virtualbox-guest-utils
+# install virtualbox guest modules
+echo 'Installing VB-guest-modules'
+pacman -S --noconfirm virtualbox-guest-modules-arch
+
+# vbox modules
+echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 # install dev envt.
 echo 'Installing dev environment'
@@ -57,18 +61,18 @@ pacman -S --noconfirm expac fakeroot yajl openssl
 echo 'Setting up user'
 read -t 1 -n 1000000 discard      # discard previous input
 echo 'root:'$password | chpasswd
-useradd -m -G wheel -s /bin/zsh adrien
-touch /home/adrien/.zshrc
-chown adrien:adrien /home/adrien/zshrc
-mkdir /home/adrien/org
-chown adrien:adrien /home/adrien/org
-mkdir /home/adrien/workspace
-chown adrien:adrien /home/adrien/workspace
-echo 'adrien:'$password | chpasswd
+useradd -m -G wheel -s /bin/zsh $user
+touch /home/$user/.zshrc
+chown $user:$user /home/$user/zshrc
+mkdir /home/$user/org
+chown $user:$user /home/$user/org
+mkdir /home/$user/workspace
+chown $user:$user /home/$user/workspace
+echo $user:$password | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 
 # preparing post install
-wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/adrien/post-install.sh
-chown adrien:adrien /home/adrien/post-install.sh
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/$user/post-install.sh
+chown $user:$user /home/$user/post-install.sh
 
 echo 'Done'

@@ -39,21 +39,21 @@ makepkg PKGBUILD
 read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U pacaur-*.pkg.tar.xz --noconfirm
 
-# oh-my-zsh
-cd
-read -t 1 -n 1000000 discard      # discard previous input
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-sleep 5
-sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
-sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
-source ~/.zshrc
-
 # tmux setup like emacs
+cd
 echo 'unbind C-b' > ~/.tmux.conf
 echo 'set -g prefix C-x' >> ~/.tmux.conf
 echo 'bind C-x send-prefix' >> ~/.tmux.conf
 echo 'bind 2 split-window' >> ~/.tmux.conf
 echo 'bind 3 split-window -h' >> ~/.tmux.conf
+
+# oh-my-zsh
+cd
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
+sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
 
 # environment variable
 # echo 'EDITOR=emacsclient' >> /etc/environment

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-password=$1
+user=$1
+password=$2
 
 # set time
 timedatectl set-ntp true
@@ -22,7 +23,7 @@ echo 'workspace /home/adrien/workspace vboxsf uid=adrien,gid=wheel,rw,dmode=700,
 
 # chroot
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-install.sh -O /mnt/chroot-install.sh
-arch-chroot /mnt /bin/bash ./chroot-install.sh $password
+arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password
 
 # reboot
 umount /mnt
