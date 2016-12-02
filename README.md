@@ -26,7 +26,7 @@ bash post-install.sh
 The script will ask for the root password a couple of times.
 
 ## Usage
-Once the VM is booted, log in as 'adrien' and call `startx` to start Xorg.
+Once the VM is booted, log in as your user and call `startx` to start Xorg.
 
 ## TODO
 - dhcpcd on boot
