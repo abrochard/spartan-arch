@@ -49,7 +49,7 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 # install dev envt.
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux
+pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
 npm install -g jscs jshint bower
 
