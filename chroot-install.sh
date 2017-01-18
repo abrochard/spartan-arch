@@ -18,7 +18,7 @@ hwclock --systohc
 
 # setup locale
 echo 'Setting up locale'
-sed -i 's/^#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/local.gen
+sed -i 's/^#en_US.UTF-8/en_US.UTF-8/' /etc/local.gen
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
@@ -50,7 +50,7 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 # install dev envt.
 echo 'Installing dev environment'
 pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
-pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
+pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher lxterminal
 npm install -g jscs jshint bower
 
 # install req for pacaur & cower
