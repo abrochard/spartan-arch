@@ -57,15 +57,15 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
 
 # environment variable
-echo 'EDITOR=emacsclient' >> /etc/environment
+# echo 'EDITOR=emacsclient' >> /etc/environment
 
 # i3status
 mkdir ~/.config/i3status
 cp /etc/i3status.conf ~/.config/i3status/config
 sed -i 's/^order += "ipv6"/#order += "ipv6"/' ~/.config/i3status/config
-sed -i 's/^order += "ipv6"/#order += "run_watch VPN"/' ~/.config/i3status/config
-sed -i 's/^order += "ipv6"/#order += "wireless _first_"/' ~/.config/i3status/config
-sed -i 's/^order += "ipv6"/#order += "battery 0"/' ~/.config/i3status/config
+sed -i 's/^order += "run_watch VPN"/#order += "run_watch VPN"/' ~/.config/i3status/config
+sed -i 's/^order += "wireless _first_"/#order += "wireless _first_"/' ~/.config/i3status/config
+sed -i 's/^order += "battery 0"/#order += "battery 0"/' ~/.config/i3status/config
 
 # ssh keys ?
 
