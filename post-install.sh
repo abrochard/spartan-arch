@@ -41,6 +41,10 @@ makepkg PKGBUILD
 read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U pacaur-*.pkg.tar.xz --noconfirm
 
+# xterm setup
+echo 'XTerm*background:black' > ~/.Xdefaults
+echo 'XTerm*foreground:white' >> ~/.Xdefaults
+
 # tmux setup like emacs
 cd
 echo 'unbind C-b' > ~/.tmux.conf
@@ -58,10 +62,14 @@ sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="bira"/' ~/.zshrc
 sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump common-aliases)/' ~/.zshrc
 
 # environment variable
-# echo 'EDITOR=emacsclient' >> /etc/environment
+echo 'export EDITOR=emacsclient' >> ~/.zshrc
+echo 'export TERMINAL=xterm' >> ~/.zshrc
 
 # i3status
-if [ ! -d ~/.config/i3status]; then
+if [ -f ~/.config/i3status ]; then
+    rm -f ~/.config/i3status
+fi
+if [ ! -d ~/.config/i3status ]; then
     mkdir ~/.config/i3status
 fi
 cp /etc/i3status.conf ~/.config/i3status/config
@@ -70,7 +78,11 @@ sed -i 's/^order += "run_watch VPN"/#order += "run_watch VPN"/' ~/.config/i3stat
 sed -i 's/^order += "wireless _first_"/#order += "wireless _first_"/' ~/.config/i3status/config
 sed -i 's/^order += "battery 0"/#order += "battery 0"/' ~/.config/i3status/config
 
-# ssh keys ?
+# git first time setup
+git config --global user.name $(whoami)
+git config --global user.email $(whoami)@$(hostname)
+git config --global code.editor emacsclient
+echo '    AddKeysToAgent yes' >> ~/.ssh/config
 
 echo 'Done'
 startx
