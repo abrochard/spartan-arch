@@ -13,6 +13,7 @@ cd
 head -n -5 /etc/X11/xinit/xinitrc > ~/.xinitrc
 echo 'exec VBoxClient --clipboard -d &' >> ~/.xinitrc
 echo 'exec VBoxClient --display -d &' >> ~/.xinitrc
+echo 'eval $(ssh-agent)' >> ~/.xinitrc
 echo 'exec i3 &' >> ~/.xinitrc
 echo 'exec emacs' >> ~/.xinitrc
 
@@ -60,7 +61,9 @@ sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump comm
 # echo 'EDITOR=emacsclient' >> /etc/environment
 
 # i3status
-mkdir ~/.config/i3status
+if [ ! -d ~/.config/i3status]; then
+    mkdir ~/.config/i3status
+fi
 cp /etc/i3status.conf ~/.config/i3status/config
 sed -i 's/^order += "ipv6"/#order += "ipv6"/' ~/.config/i3status/config
 sed -i 's/^order += "run_watch VPN"/#order += "run_watch VPN"/' ~/.config/i3status/config
