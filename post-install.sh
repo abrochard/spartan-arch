@@ -44,6 +44,8 @@ sudo pacman -U pacaur-*.pkg.tar.xz --noconfirm
 # xterm setup
 echo 'XTerm*background:black' > ~/.Xdefaults
 echo 'XTerm*foreground:white' >> ~/.Xdefaults
+echo 'UXTerm*background:black' >> ~/.Xdefaults
+echo 'UXTerm*foreground:white' >> ~/.Xdefaults
 
 # tmux setup like emacs
 cd
