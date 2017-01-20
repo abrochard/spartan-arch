@@ -66,12 +66,10 @@ echo 'export EDITOR=emacsclient' >> ~/.zshrc
 echo 'export TERMINAL=xterm' >> ~/.zshrc
 
 # i3status
-if [ -f ~/.config/i3status ]; then
-    rm -f ~/.config/i3status
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
 fi
-if [ ! -d ~/.config/i3status ]; then
-    mkdir ~/.config/i3status
-fi
+mkdir ~/.config/i3status
 cp /etc/i3status.conf ~/.config/i3status/config
 sed -i 's/^order += "ipv6"/#order += "ipv6"/' ~/.config/i3status/config
 sed -i 's/^order += "run_watch VPN"/#order += "run_watch VPN"/' ~/.config/i3status/config
