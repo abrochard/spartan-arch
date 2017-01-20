@@ -84,5 +84,13 @@ git config --global user.email $(whoami)@$(hostname)
 git config --global code.editor emacsclient
 echo '    AddKeysToAgent yes' >> ~/.ssh/config
 
+# if there are ssh key
+if [ -d ~/workspace/ssh ]; then
+    if [ -d ~/.ssh ]; then
+        rm -rf ~/.ssh
+    fi
+    ln -s ~/workspace/ssh ~/.ssh
+fi
+
 echo 'Done'
 startx
