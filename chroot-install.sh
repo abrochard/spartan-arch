@@ -43,7 +43,7 @@ pacman -S --noconfirm virtualbox-guest-utils
 
 # install dev envt.
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep
+pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep ntp
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
 npm install -g jscs jshint bower
 
@@ -60,5 +60,9 @@ useradd -m -G wheel -s /bin/zsh adrien
 echo 'User password:'
 passwd adrien
 visudo
+
+# udpating timezone again
+ntpdate -s pool.ntp.org
+timedatectl set-timezone American/New_York
 
 echo 'Done'
