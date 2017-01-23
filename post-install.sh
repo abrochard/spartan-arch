@@ -92,7 +92,8 @@ if [ -d ~/workspace/ssh ]; then
 fi
 
 # temporary workaround
-wget [TODO] -O startx.sh
+cd
+wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/startx.sh -O startx.sh
 chmod +x startx.sh
 echo 'alias startx=~/startx.sh' >> ~/.zshrc
 
