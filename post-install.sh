@@ -13,7 +13,6 @@ cd
 head -n -5 /etc/X11/xinit/xinitrc > ~/.xinitrc
 echo 'exec VBoxClient --clipboard -d &' >> ~/.xinitrc
 echo 'exec VBoxClient --display -d &' >> ~/.xinitrc
-echo 'eval $(ssh-agent)' >> ~/.xinitrc
 echo 'exec i3 &' >> ~/.xinitrc
 echo 'exec emacs' >> ~/.xinitrc
 
@@ -92,5 +91,10 @@ if [ -d ~/workspace/ssh ]; then
     ln -s ~/workspace/ssh ~/.ssh
 fi
 
+# temporary workaround
+wget [TODO] -O startx.sh
+chmod +x startx.sh
+echo 'alias startx=~/startx.sh' >> ~/.zshrc
+
 echo 'Done'
-startx
+~/startx

@@ -14,6 +14,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 # setup timezone
 echo 'Setting up timezone'
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+timedatectl set-timezone America/New_York
 hwclock --systohc
 
 # setup locale
@@ -74,9 +75,5 @@ echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
 # preparing post install
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/$user/post-install.sh
 chown $user:$user /home/$user/post-install.sh
-
-# udpating timezone again
-ntpdate -s pool.ntp.org
-timedatectl set-timezone American/New_York
 
 echo 'Done'
