@@ -1,7 +1,7 @@
 #!/bin/sh
 
 eval $(ssh-agent)
-if [ -f ~/.ssh/id_rsa]; then
+if [ -f ~/.ssh/id_rsa ]; then
     ssh-add ~/.ssh/id_rsa
 fi
 sudo dhcpcd
