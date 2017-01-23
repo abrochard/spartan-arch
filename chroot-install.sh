@@ -50,7 +50,7 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 # install dev envt.
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu ntp
+pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu ntp dhclient keychain
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher ttf-inconsolata
 npm install -g jscs jshint bower grunt
 
