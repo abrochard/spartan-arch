@@ -4,9 +4,9 @@
 
 # network on boot?
 read -t 1 -n 1000000 discard      # discard previous input
-sudo dhcpcd
+sudo dhclient enp0s3
 echo 'Waiting for internet connection'
-sleep 25
+
 
 # xinitrc
 cd
@@ -98,4 +98,4 @@ chmod +x startx.sh
 echo 'alias startx=~/startx.sh' >> ~/.zshrc
 
 echo 'Done'
-~/startx
+~/startx.sh
