@@ -64,7 +64,7 @@ sed -i 's/plugins=(git)/plugins=(git compleat sudo archlinux emacs autojump comm
 
 # environment variable
 echo 'export EDITOR=emacsclient' >> ~/.zshrc
-echo 'export TERMINAL=xterm' >> ~/.zshrc
+echo 'export TERMINAL=lxterminal' >> ~/.zshrc
 
 # i3status
 if [ ! -d ~/.config ]; then
