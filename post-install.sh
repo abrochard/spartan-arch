@@ -24,10 +24,9 @@ echo '(server-start)' >> ~/.emacs
 # cower & pacaur
 mkdir Downloads
 cd ~/Downloads
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz
-tar -xvf cower.tar.gz
-cd cower
-gpg --recv-keys --keyserver hkp://pgp.mit.edu 1EB2638FF56C0C53
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/cower-git.tar.gz
+tar -xvf cower-git.tar.gz
+cd cower-git
 makepkg PKGBUILD
 read -t 1 -n 1000000 discard      # discard previous input
 sudo pacman -U cower-*.pkg.tar.xz --noconfirm
