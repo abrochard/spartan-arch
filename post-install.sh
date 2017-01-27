@@ -14,6 +14,7 @@ head -n -5 /etc/X11/xinit/xinitrc > ~/.xinitrc
 echo 'exec VBoxClient --clipboard -d &' >> ~/.xinitrc
 echo 'exec VBoxClient --display -d &' >> ~/.xinitrc
 echo 'exec i3 &' >> ~/.xinitrc
+echo 'exec nitrogen --restore &' >> ~/.xinitrc
 echo 'exec emacs' >> ~/.xinitrc
 
 # emacs config
@@ -89,6 +90,20 @@ if [ -d ~/workspace/ssh ]; then
     fi
     ln -s ~/workspace/ssh ~/.ssh
 fi
+
+# wallpaper setup
+cd
+mkdir Pictures
+cd Pictures
+wget https://images2.alphacoders.com/601/601091.jpg -O wallpaper.jpg
+cd ~/.config/
+mkdir nitrogen
+cd nitrogen
+echo '[xin_-1]' > bg-saved.cfg
+echo "file=/home/$(whoami)/Pictures/wallpaper.jpg" >> bg-saved.cfg
+echo 'mode=0' >> bg-saved.cfg
+echo 'bgcolor=#000000' >> bg-saved.cfg
+
 
 # temporary workaround
 cd

@@ -50,8 +50,9 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 
 # install dev envt.
 echo 'Installing dev environment'
-pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu ntp dhclient keychain
-pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher ttf-inconsolata lxterminal
+pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
+pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
+pacman -S --noconfirm ttf-inconsolata lxterminal nitrogen ntp dhclient keychain
 npm install -g jscs jshint bower grunt
 
 # install req for pacaur & cower
@@ -71,6 +72,9 @@ mkdir /home/$user/workspace
 chown $user:$user /home/$user/workspace
 echo $user:$password | chpasswd
 echo '%wheel ALL=(ALL) ALL' >> /etc/sudoers
+
+# enable services
+systemctl enable ntpdate.service
 
 # preparing post install
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/post-install.sh -O /home/$user/post-install.sh
