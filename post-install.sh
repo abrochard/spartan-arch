@@ -107,6 +107,11 @@ echo 'bgcolor=#000000' >> bg-saved.cfg
 # golang setup
 mkdir ~/go
 echo 'export GOPATH=$HOME/go' >> ~/.zshrc
+echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.zshrc
+go get -u github.com/nsf/gocode
+go get -u github.com/rogpeppe/godef
+go get -u golang.org/x/tools/cmd/goimports
+go get -u github.com/jstemmer/gotags
 
 
 # temporary workaround
