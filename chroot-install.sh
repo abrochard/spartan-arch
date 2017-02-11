@@ -52,7 +52,7 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 echo 'Installing dev environment'
 pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
-pacman -S --noconfirm ttf-inconsolata lxterminal nitrogen ntp dhclient keychain
+pacman -S --noconfirm ttf-inconsolata lxterminal nitrogen ntp dhclient keychain go go-tools
 npm install -g jscs jshint bower grunt
 
 # install req for pacaur & cower
