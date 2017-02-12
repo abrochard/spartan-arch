@@ -13,6 +13,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # setup timezone
 echo 'Setting up timezone'
+timedatectl set-ntp true
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 timedatectl set-timezone America/New_York
 hwclock --systohc
