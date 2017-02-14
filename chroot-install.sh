@@ -13,6 +13,7 @@ rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
 
 # setup timezone
 echo 'Setting up timezone'
+timedatectl set-ntp true
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 timedatectl set-timezone America/New_York
 hwclock --systohc
@@ -52,7 +53,7 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 echo 'Installing dev environment'
 pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
-pacman -S --noconfirm ttf-hack lxterminal nitrogen ntp dhclient keychain
+pacman -S --noconfirm ttf-hack lxterminal nitrogen ntp dhclient keychain go go-tools
 npm install -g jscs jshint bower grunt
 
 # install req for pacaur & cower

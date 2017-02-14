@@ -104,6 +104,16 @@ echo "file=/home/$(whoami)/Pictures/wallpaper.jpg" >> bg-saved.cfg
 echo 'mode=0' >> bg-saved.cfg
 echo 'bgcolor=#000000' >> bg-saved.cfg
 
+# golang setup
+mkdir ~/go
+GOPATH=$HOME/go
+echo 'export GOPATH=$GOPATH' >> ~/.zshrc
+echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.zshrc
+go get -u github.com/nsf/gocode
+go get -u github.com/rogpeppe/godef
+go get -u golang.org/x/tools/cmd/goimports
+go get -u github.com/jstemmer/gotags
+
 
 # temporary workaround
 cd
