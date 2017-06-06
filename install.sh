@@ -18,9 +18,16 @@ fi
 
 if [ -z "$3" ]
 then
-    fast=0
+    echo "Do you want to skip rankmirrors (faster upfront)? [y/N] "
+    read response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+        fast=1
+    else
+        fast=0
+    fi
 else
-    fast=1
+    fast=$3
 fi
 
 # set time
