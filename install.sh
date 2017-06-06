@@ -2,18 +2,18 @@
 
 if [ -z "$1" ]
 then
-    user=$1
-else
     echo "Enter your username: "
     read user
+else
+    user=$1
 fi
 
 if [ -z "$2" ]
 then
-    password=$2
-else
     echo "Enter your master password: "
     read -s password
+else
+    password=$2
 fi
 
 if [ -z "$3" ]
