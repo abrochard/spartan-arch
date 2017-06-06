@@ -1,7 +1,27 @@
 #!/bin/bash
 
-user=$1
-password=$2
+if [ -z "$1" ]
+then
+    user=$1
+else
+    echo "Enter your username: "
+    read user
+fi
+
+if [ -z "$2" ]
+then
+    password=$2
+else
+    echo "Enter your master password: "
+    read -s password
+fi
+
+if [ -z "$3" ]
+then
+    fast=0
+else
+    fast=1
+fi
 
 # set time
 timedatectl set-ntp true
@@ -23,7 +43,7 @@ echo "workspace /home/$user/workspace vboxsf uid=$user,gid=wheel,rw,dmode=700,fm
 
 # chroot
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-install.sh -O /mnt/chroot-install.sh
-arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password
+arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password $fast
 
 # reboot
 umount /mnt
