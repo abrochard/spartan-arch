@@ -1,7 +1,34 @@
 #!/bin/bash
 
-user=$1
-password=$2
+if [ -z "$1" ]
+then
+    echo "Enter your username: "
+    read user
+else
+    user=$1
+fi
+
+if [ -z "$2" ]
+then
+    echo "Enter your master password: "
+    read -s password
+else
+    password=$2
+fi
+
+if [ -z "$3" ]
+then
+    echo "Do you want to skip rankmirrors (faster upfront)? [y/N] "
+    read response
+    if [[ "$response" =~ ^([yY][eE][sS]|[yY])+$ ]]
+    then
+        fast=1
+    else
+        fast=0
+    fi
+else
+    fast=$3
+fi
 
 # set time
 timedatectl set-ntp true
@@ -23,7 +50,7 @@ echo "workspace /home/$user/workspace vboxsf uid=$user,gid=wheel,rw,dmode=700,fm
 
 # chroot
 wget https://raw.githubusercontent.com/abrochard/spartan-arch/master/chroot-install.sh -O /mnt/chroot-install.sh
-arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password
+arch-chroot /mnt /bin/bash ./chroot-install.sh $user $password $fast
 
 # reboot
 umount /mnt

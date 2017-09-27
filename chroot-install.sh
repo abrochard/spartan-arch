@@ -4,12 +4,18 @@
 
 user=$1
 password=$2
+fast=$3
 
 # setup mirrors
-echo 'Setting up mirrors'
-cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
-sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
-rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+if [ "$fast" -eq "1"]
+then
+    echo 'Setting up mirrors'
+    cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+    sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorlist.backup
+    rankmirrors -n 6 /etc/pacman.d/mirrorlist.backup > /etc/pacman.d/mirrorlist
+else
+    echo 'Skipping mirror ranking because fast'
+fi
 
 # setup timezone
 echo 'Setting up timezone'
@@ -53,8 +59,8 @@ echo 'vboxsf' > /etc/modules-load.d/vboxsf.conf
 echo 'Installing dev environment'
 pacman -S --noconfirm git emacs zsh nodejs npm vim wget perl make gcc grep tmux i3 dmenu
 pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_searcher
-pacman -S --noconfirm ttf-inconsolata lxterminal nitrogen ntp dhclient keychain
-pacman -S --noconfirm python-pip go go-tools
+pacman -S --noconfirm ttf-hack lxterminal nitrogen ntp dhclient keychain
+pacman -S --noconfirm python-pip go go-tools pkg-config
 npm install -g jscs jshint bower grunt
 pip install pipenv
 
