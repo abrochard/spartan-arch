@@ -62,7 +62,7 @@ pacman -S --noconfirm chromium curl autojump openssh sudo mlocate the_silver_sea
 pacman -S --noconfirm ttf-hack lxterminal nitrogen ntp dhclient keychain
 pacman -S --noconfirm python-pip go go-tools pkg-config
 npm install -g jscs jshint bower grunt
-pip install pipenv
+pip install pipenv bpython ipython
 
 # install req for pacaur & cower
 echo 'Installing dependencies'
