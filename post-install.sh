@@ -95,7 +95,7 @@ fi
 cd
 mkdir Pictures
 cd Pictures
-wget https://images2.alphacoders.com/601/601091.jpg -O wallpaper.jpg
+wget https://github.com/abrochard/spartan-arch/blob/master/wallpaper.jpg?raw=true -O wallpaper.jpg
 cd ~/.config/
 mkdir nitrogen
 cd nitrogen
